@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f0eb">
+  <title>I Really Love You</title>
+  <style>
+    :root {
+      --paper: #fbf7f3;
+      --paper-deep: #f3e9e3;
+      --ink: #51413f;
+      --muted: #927c78;
+      --rose: #b77e83;
+      --line: rgba(126, 91, 88, .17);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 12% 12%, rgba(222, 183, 179, .24), transparent 34rem),
+        radial-gradient(ellipse at 88% 82%, rgba(232, 207, 190, .28), transparent 34rem),
+        var(--paper);
+      font-family: Georgia, "Times New Roman", serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .15;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.16'/%3E%3C/svg%3E");
+      z-index: 5;
+    }
+    .page {
+      width: min(100% - 36px, 760px);
+      margin: 0 auto;
+      padding: 58px 0 44px;
+      position: relative;
+    }
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      color: var(--muted);
+      font: 10px/1.4 Arial, sans-serif;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: rise .8s .1s forwards;
+    }
+    .topline::before, .topline::after {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: #c9aaa5;
+    }
+    header {
+      text-align: center;
+      padding: 31px 0 34px;
+      opacity: 0;
+      animation: rise .9s .2s forwards;
+    }
+    h1 {
+      margin: 0;
+      color: #654d4b;
+      font-size: clamp(42px, 8vw, 68px);
+      line-height: 1.06;
+      font-weight: 400;
+      letter-spacing: -.045em;
+    }
+    .subtitle {
+      margin: 17px 0 0;
+      color: var(--muted);
+      font: 12px/1.7 Arial, sans-serif;
+      letter-spacing: .12em;
+    }
+    .heart {
+      display: inline-block;
+      color: var(--rose);
+      font-size: 15px;
+      margin: 0 5px;
+      transform: translateY(-1px);
+    }
+    .letter-wrap {
+      position: relative;
+      opacity: 0;
+      animation: rise 1s .38s forwards;
+    }
+    .letter {
+      position: relative;
+      padding: clamp(27px, 6vw, 58px) clamp(23px, 7vw, 66px);
+      background: rgba(255, 252, 249, .82);
+      border: 1px solid rgba(150, 111, 106, .2);
+      box-shadow: 0 18px 55px rgba(91, 62, 57, .07), 0 2px 8px rgba(91, 62, 57, .035);
+    }
+    .letter::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border: 1px solid rgba(183, 126, 131, .13);
+      pointer-events: none;
+    }
+    .letter-top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 29px;
+      color: #b28b87;
+      font: 9px/1 Arial, sans-serif;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    .letter-top::before, .letter-top::after {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: #d8c0bb;
+    }
+    .message {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(16px, 2.2vw, 18px);
+      line-height: 1.95;
+      letter-spacing: .003em;
+      color: #5b4a47;
+    }
+    .message p { margin: 0 0 25px; }
+    .message p:last-child { margin-bottom: 0; }
+    .closing {
+      text-align: center;
+      padding: 34px 0 0;
+      color: var(--rose);
+      font-size: 23px;
+      letter-spacing: .12em;
+    }
+    footer {
+      padding-top: 31px;
+      text-align: center;
+      color: #a18b86;
+      font: 10px/1.7 Arial, sans-serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .seal {
+      position: absolute;
+      top: -17px;
+      right: 25px;
+      width: 35px;
+      height: 35px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #bd898c;
+      color: #fff8f4;
+      font-size: 14px;
+      box-shadow: 0 4px 12px rgba(111, 70, 72, .13);
+      transform: rotate(9deg);
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 520px) {
+      .page { width: min(100% - 24px, 760px); padding-top: 39px; }
+      header { padding: 27px 0 27px; }
+      .letter { padding-top: 35px; padding-bottom: 35px; }
+      .message { line-height: 1.85; }
+      .message p { margin-bottom: 22px; }
+      .seal { right: 18px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topline">A little something for you</div>
+    <header>
+      <h1>I Really Love You</h1>
+      <p class="subtitle"><span class="heart">♡</span> in all the little ways <span class="heart">♡</span></p>
+    </header>
+
+    <section class="letter-wrap" aria-label="A letter">
+      <div class="seal" aria-hidden="true">♡</div>
+      <article class="letter">
+        <div class="letter-top">for mera pyaara baccha, meri Rasmalai</div>
+        <div class="message">
+          <p>I love you, and I don't think you realise just how much. Sometimes I randomly find myself thinking about you, remembering something you said, something you did, or even the most ordinary little thing about you, and somehow it makes me smile. I love listening to you, talking to you, annoying you, hearing all your random stories and just knowing that I get to have you in my life. It's funny how someone can become such a huge part of your everyday thoughts without even trying. And that's exactly what you've become for me. You're in so many little things, in so many random thoughts, and in moments when I don't even have a reason to miss you. I just do.</p>
+
+          <p>I love you for being you, not just for the sweet things you do for me or the way you make me feel, but for all the little things that make you who you are. Your voice, your eyes, your laugh, your way of talking, your random moods, your silly little habits, even the things you probably think are insignificant. I notice them, and I adore them. I don't need every conversation to be special, nor do I need us to do something extraordinary every time we talk. Even the most ordinary moments with you mean so much to me. I just want to know about your day, listen to you yap, share my nonsense with you, and keep making these little memories with you. And I hope you never feel like you have to be anything other than yourself with me.</p>
+
+          <p>I love you, and I want you to know that this isn't something I feel only when everything is perfect or when we're having the best days. I love you through the silly conversations, the random arguments, the moments when we don't know what to say, and even the days when things feel a little difficult. I know I won't always have the perfect words, and I know I won't always get everything right, but what I feel for you is something I genuinely want to take care of. I want to keep learning you, keep understanding you, keep being there for you, and keep choosing to make this little world of ours a happier place. I don't know how many different ways I'll end up telling you this, but I don't think I'll ever get tired of it. You're my favourite person, my everything, my favourite part every day, and I love you</p>
+        </div>
+        <div class="closing" aria-label="heart">♡</div>
+      </article>
+    </section>
+
+    <footer>Wrote with dherrr saraa pyaarr.</footer>
+  </main>
+</body>
+</html>
